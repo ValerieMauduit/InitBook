@@ -25,16 +25,15 @@ def nbmots(nomfic, **keywords):
         # Remplacer les apostrophes par des espaces - si option
         if keywords.get('apostrophe'):
             l = l.replace("'", "' ")
-        else:
-            print(keywords.get('apostrophe'))
         # Retirer les ponctuations - si option
         if keywords.get('ponctuation'):
-            l = l.replace(".", "")
-            l = l.replace(",", "")
-            l = l.replace(";", "")
-            l = l.replace("!", "")
-            l = l.replace("?", "")
-            l = l.replace(":", "")
+            l = l.replace(".", " ")
+            l = l.replace(",", " ")
+            l = l.replace(";", " ")
+            l = l.replace("!", " ")
+            l = l.replace("?", " ")
+            l = l.replace(":", " ")
+            l = l.replace('"', ' ')
         # Renvoyer plutôt la liste des mots que leur compte - si option
         if keywords.get('liste'):
             return l.split()
@@ -68,20 +67,19 @@ def compte_mots(liste, **keywords):
 # Tests de la librairie -------------------------------------------------------
 if __name__ == '__main__':
     print('=== Début des tests du module comptage_fichier ====================')
-    print('Fonction nblines - Nombre de lignes dans le script module : '
-        '{}'.format(nblines('comptage_fichier.py')))
-    print('')
-    print('Fonction nbmots - Nombre de mots dans le script module : '
-        '{}'.format(nbmots('comptage_fichier.py')))
-    ltest = nbmots('comptage_fichier.py', 
-        liste = True, apostrophe = True, ponctuation = True)
-    print('Fonction nbmots - Liste des mots dans le script module : '
-        '{}'.format(ltest))
-    print('')
-    print('')
-    print('')
-    ltest = nbmots('ficwrite.txt', liste = True)
+#    print('Fonction nblines - Nombre de lignes dans le script module : '
+#        '{}'.format(nblines('comptage_fichier.py')))
+#    print('')
+#    print('Fonction nbmots - Nombre de mots dans le script module : '
+#        '{}'.format(nbmots('comptage_fichier.py')))
+#    ltest = nbmots('comptage_fichier.py', 
+#        liste = True, apostrophe = True, ponctuation = True)
+#    print('Fonction nbmots - Liste des mots dans le script module : '
+#        '{}'.format(ltest))
+#    print('')
+#    print('')
+#    print('')
     print("Fonction compte_mots - Nombre d'instances de chaque mot "
-        "dans le script module : "
+        "dans le fichier de test : "
         '{}'.format(compte_mots(ltest)))
     print('=== Fin des tests du module comptage_fichier ======================')
