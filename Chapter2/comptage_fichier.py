@@ -67,19 +67,18 @@ def compte_mots(liste, **keywords):
 # Tests de la librairie -------------------------------------------------------
 if __name__ == '__main__':
     print('=== Début des tests du module comptage_fichier ====================')
-#    print('Fonction nblines - Nombre de lignes dans le script module : '
-#        '{}'.format(nblines('comptage_fichier.py')))
-#    print('')
-#    print('Fonction nbmots - Nombre de mots dans le script module : '
-#        '{}'.format(nbmots('comptage_fichier.py')))
-#    ltest = nbmots('comptage_fichier.py', 
-#        liste = True, apostrophe = True, ponctuation = True)
-#    print('Fonction nbmots - Liste des mots dans le script module : '
-#        '{}'.format(ltest))
-#    print('')
-#    print('')
-#    print('')
+    print('Fonction nblines - Nombre de lignes dans le script module : '
+        '{}'.format(nblines('comptage_fichier.py')))
+    print('')
+    print('Fonction nbmots - Nombre de mots dans le script module : '
+        '{}'.format(nbmots('comptage_fichier.py')))
+    ltest = nbmots('comptage_fichier.py', 
+        liste = True, apostrophe = True, ponctuation = True)
+    print('Fonction nbmots - Liste des mots dans le script module : '
+        '{}'.format(ltest))
+    print('')
     print("Fonction compte_mots - Nombre d'instances de chaque mot "
         "dans le fichier de test : "
         '{}'.format(compte_mots(ltest)))
     print('=== Fin des tests du module comptage_fichier ======================')
+    
