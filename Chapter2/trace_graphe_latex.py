@@ -2,6 +2,7 @@
 # -*- coding : Utf-8 -*-
 
 from math import *
+import os
 
 #------------------------------------------------------------------------------
 # Calcul des points de la courbe d'équation polaire 
@@ -25,8 +26,26 @@ fichier.close()
 # Ecriture d'un fichier maître LaTeX contenant le préambule et 
 # l'environnement tikz et appelant le fichier esclave
 
+s = ("\\documentclass{article}\n\n"
+     "\\usepackage[mathletters]{ucs}\n"
+     "\\usepackage[utf8x]{inputenc}\n"
+     "\\usepackage[T1]{fontenc}\n"
+     "\\usepackage{xcolor}\n"
+     "\\usepackage{tikz}\n\n"
+     "\\begin{document}\n"
+     "\\begin{tikzpicture}[scale=2]\n"
+     "\\clip (-1.7,-1.7)  rectangle (1.7,1.7);\n"
+     "\\draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};\n"
+     "\\draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};\n"
+     "\\draw[color=blue] plot[smooth] file {courbe.table};\n"
+     "\\end{tikzpicture}\n"
+     "\\end{document}\n")
+     
+with open("courbe.tex", "w") as fic:
+    fic.writelines(s)
+     
 #------------------------------------------------------------------------------
 # Compilation du document maître à l'aide du programme rubber
 # https://launchpad.net/rubber
 
-
+os.system("rubber -d {0}.tex && evince {0}.pdf &".format('courbe'))
